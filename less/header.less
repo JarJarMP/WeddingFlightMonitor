@@ -1,0 +1,55 @@
+@rotation: 75deg;
+
+.flight-board-header {
+  padding: 0.8em;
+
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  
+  > div{
+    float: left;
+  }
+}
+
+.header-icon {
+  padding-left: 0.5%;
+  width: 19.5%;
+
+  img {
+    transform:          rotate(@rotation);
+    -ms-transform:      rotate(@rotation);
+    -moz-transform:     rotate(@rotation);
+    -webkit-transform:  rotate(@rotation);
+    -o-transform:       rotate(@rotation);
+
+    width: 3em;
+  }
+}
+
+.header-title {
+  font-family: 'Russo One', sans-serif;
+  margin-top: 0.5em;
+  text-align: center;
+  width: 60%;
+
+  p {
+    font-size: 3em;
+    letter-spacing: 0.3em;
+  }
+}
+
+.header-time {
+  height: 3em;
+  line-height: 3em;
+  width: 20%;
+}
+
+.header-time__value {
+  font-family: 'Space Mono', sans-serif;
+  font-size: 2em;
+  padding-right: 0.5em;
+  text-align: right;
+}
