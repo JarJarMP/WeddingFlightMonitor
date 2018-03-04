@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Wedding Flight Monitor</title>
+
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="flight-board">
+    <div class="flight-board-header cleared">
+      <div class="header-icon">
+        <img src="airplane.svg" alt="airplane icon">
+      </div>
+      <div class="header-title">
+        <p>ÉRKEZÉSEK</p>
+      </div>
+      <div class="header-time">
+        <p class="header-time__value">00:00</p>
+      </div>
+    </div>
+
+    <div class="flight-board-arrivals cleared">
+      <div class="flight-board-arrivals__left"></div>
+      <div class="flight-board-arrivals__right"></div>
+    </div>
+  </div>
+
+  <script src="timer.js"></script>
+  <script src="guests.js"></script>
+
+  <script>
+    const left = 'flight-board-arrivals__left',
+          right = 'flight-board-arrivals__right',
+          gl = new GuestList(left, right);
+          
+    gl.render();
+  </script>
+</body>
+</html>
