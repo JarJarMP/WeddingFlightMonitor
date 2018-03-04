@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="flight-board">
-    <div class="flight-board-header">
+    <div class="flight-board-header cleared">
       <div class="header-icon">
         <img src="images/icons/airplane.svg" alt="airplane icon">
       </div>
@@ -21,11 +21,22 @@
         <p class="header-time__value">00:00</p>
       </div>
     </div>
-    
-    <div class="flight-board-arrivals">
+
+    <div class="flight-board-arrivals cleared">
+      <div class="flight-board-arrivals__left"></div>
+      <div class="flight-board-arrivals__right"></div>
     </div>
   </div>
 
   <script src="js/timer.js"></script>
+  <script src="js/guests.js"></script>
+
+  <script>
+    const left = 'flight-board-arrivals__left',
+          right = 'flight-board-arrivals__right',
+          gl = new GuestList(left, right);
+          
+    gl.render();
+  </script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+.flight-board-arrivals {
+  color: @board-font;
+  font-family: 'Space Mono', sans-serif;
+
+  td {
+    border-bottom: 1px solid @board-table-separator;
+    font-family: 'Space Mono', sans-serif;
+    padding: 0.5em 0;
+    text-align: left;
+  }
+
+  table {
+    color: @board-font;
+    font-size: 1.3em;
+    width: 100%;
+  }
+}
+
+.flight-board-arrivals__left,
+.flight-board-arrivals__right {
+  background-color: @board-table-background;
+  float: left;
+  padding: 1%;
+  width: 47%;
+  margin: 0 .5%;
+}
+
+.flight-board-arrivals__header {
+  td {
+    padding: 0 0 1em 0;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.flight-board-arrivals__entry {
+  td {
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
