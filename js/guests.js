@@ -1,14 +1,24 @@
 function GuestList (left, right) {
   this.selectors = {left, right};
+  this.header = [
+    {
+      name: 'Család / Név',
+      nameClass: '',
+      placement: 'Város / Asztal',
+      status: 'Státusz',
+      statusClass: '',
+      rowClass: 'flight-board-arrivals__header'
+    }
+  ];
   this.list = {
     left: [
       {
-        name: 'Család / Név',
-        nameClass: '',
-        placement: 'Város / Asztal',
-        status: 'Státusz',
-        statusClass: '',
-        rowClass: 'flight-board-arrivals__header'
+        name: 'Józsi',
+        nameClass: 'text-yellow',
+        placement: 'Szeged',
+        status: 'Késik',
+        statusClass: 'text-red',
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -16,15 +26,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Késik',
         statusClass: 'text-red',
-        rowClass: 'flight-board-arrivals__entry'
-      },
-      {
-        name: 'Józsi',
-        nameClass: 'text-yellow',
-        placement: 'Szeged',
-        status: 'Késik',
-        statusClass: 'text-red',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -32,7 +34,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -40,7 +42,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -48,7 +50,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -56,7 +58,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -64,7 +66,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -72,17 +74,17 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       }
     ],
     right: [
       {
-        name: 'Család / Név',
-        nameClass: '',
-        placement: 'Város / Asztal',
-        status: 'Státusz',
-        statusClass: '',
-        rowClass: 'flight-board-arrivals__header'
+        name: 'Józsi',
+        nameClass: 'text-yellow',
+        placement: 'Szeged',
+        status: 'Késik',
+        statusClass: 'text-red',
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -90,15 +92,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Késik',
         statusClass: 'text-red',
-        rowClass: 'flight-board-arrivals__entry'
-      },
-      {
-        name: 'Józsi',
-        nameClass: 'text-yellow',
-        placement: 'Szeged',
-        status: 'Késik',
-        statusClass: 'text-red',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -106,7 +100,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -114,7 +108,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi az irdatlan hosszú nevű pék',
@@ -122,7 +116,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -130,7 +124,7 @@ function GuestList (left, right) {
         placement: 'Szeged és csodálatos környéke',
         status: 'Úton',
         statusClass: '',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -138,7 +132,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       },
       {
         name: 'Józsi',
@@ -146,7 +140,7 @@ function GuestList (left, right) {
         placement: 'Szeged',
         status: 'Megérkezett',
         statusClass: 'text-green',
-        rowClass: 'flight-board-arrivals__entry'
+        rowClass: 'flight-board-arrivals__guest'
       }
     ]
   };
@@ -154,8 +148,9 @@ function GuestList (left, right) {
 
 GuestList.prototype.render = function () {
   const self = this,
-        left = `<table>${self.list.left.map(guest => self.getOneRow(guest)).join('')}</table>`,
-        right = `<table>${self.list.right.map(guest => self.getOneRow(guest)).join('')}</table>`;
+        header = `<table class="flight-board-arrivals__headers">${self.header.map(entry => self.getOneRow(entry)).join('')}</table>`,
+        left = `${header}<table class="flight-board-arrivals__guests">${self.list.left.map(guest => self.getOneRow(guest)).join('')}</table>`,
+        right = `${header}<table class="flight-board-arrivals__guests">${self.list.right.map(guest => self.getOneRow(guest)).join('')}</table>`;
   
   self.setHTML(self.selectors.left, left);
   self.setHTML(self.selectors.right, right);

@@ -5,8 +5,10 @@
   td {
     border-bottom: 1px solid @board-table-separator;
     font-family: 'Space Mono', sans-serif;
+    line-height: 120%;
     padding: 0.5em 0;
     text-align: left;
+    text-transform: uppercase;
   }
 
   table {
@@ -25,9 +27,13 @@
   margin: 0 .5%;
 }
 
+.flight-board-arrivals__headers {
+  margin-bottom: 2em;
+}
+
 .flight-board-arrivals__header {
   td {
-    padding: 0 0 1em 0;
+    border-bottom-width: 0;
 
     &:last-child {
       text-align: right;
@@ -35,7 +41,15 @@
   }
 }
 
-.flight-board-arrivals__entry {
+.flight-board-arrivals__guests {
+  tr:first-child {
+    td{
+      border-top: 1px solid @board-table-separator;
+    }
+  }
+}
+
+.flight-board-arrivals__guest {
   td {
     &:last-child {
       text-align: right;
