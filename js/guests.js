@@ -70,13 +70,16 @@ GuestList.prototype.makeRequest = function (method, url) {
 }
 
 GuestList.prototype.render = function () {
-  const self = this,
-        header = `<table class="flight-board-arrivals__headers">${self.header.map(entry => self.getOneRow(entry)).join('')}</table>`,
-        left = `${header}<table class="flight-board-arrivals__guests">${self.list.left.map(guest => self.getOneRow(guest)).join('')}</table>`,
-        right = `${header}<table class="flight-board-arrivals__guests">${self.list.right.map(guest => self.getOneRow(guest)).join('')}</table>`;
+  const header = this.getTable(['flight-board-arrivals__headers'], this.header),
+        left = `${header}${this.getTable(['flight-board-arrivals__guests'], this.list.left)}`,
+        right = `${header}${this.getTable(['flight-board-arrivals__guests'], this.list.right)}`;
   
-  self.setHTML(self.selectors.left, left);
-  self.setHTML(self.selectors.right, right);
+  this.setHTML(this.selectors.left, left);
+  this.setHTML(this.selectors.right, right);
+}
+
+GuestList.prototype.getTable = function (classList, data) {
+  return `<table class="${classList.join(' ')}">${data.map(guest => this.getOneRow(guest)).join('')}</table>`;
 }
 
 GuestList.prototype.getOneRow = function (data) {
