@@ -1,17 +1,20 @@
 function getOrdering(length) {
-    var order = [];
-    for (var i = 0; i < length; i++) {
-        order.push(i);
-    }
-    shuffleArray(order);
-    return order;
+  var numbers = Array.apply(null, {length: length || 0}).map(Number.call, Number);
+
+  return shuffleArray(numbers);
 }
 
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
+function shuffleArray(elements) {
+  var result = elements.map(x => x);
+  var temp = null;
+  var j = null;
+
+  for (var i = result.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = result[i];
+    result[i] = result[j];
+    result[j] = temp;
+  }
+
+  return result;
 }
