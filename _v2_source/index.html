@@ -1,0 +1,162 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Wedding Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            background: grey;
+            color: white;
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 24px;
+        }
+
+        .splitflap {
+            margin: 0 auto;
+            -webkit-perspective-origin: top;
+            -moz-perspective-origin: top;
+            -ms-perspective-origin: top;
+            perspective-origin: top;
+            -webkit-perspective: 900px;
+            -moz-perspective: 900px;
+            -ms-perspective: 900px;
+            perspective: 900px;
+        }
+
+        #dashboard {
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #firstSection {
+            float: left;
+        }
+
+        #secondSection {
+            margin-left: 5px;
+            float: left;
+        }
+
+        #thirdSection {
+            margin-left: 5px;
+            float: left;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="js/guests.js"></script>
+    <script src="js/ordering.js"></script>
+    <script src="js/jquery.splitflap.js"></script>
+</head>
+<body>
+    <div class="heading"></div> <br />
+    <div id="dashboard">
+        <div id="firstSection"></div>
+        <div id="secondSection"></div>
+        <div id="thirdSection"></div>
+    </div>
+
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                var guests = getGuests();
+                var ordering = getOrdering(guests.length);
+
+                initHeading($);
+                initDashboard($, guests);
+
+                window.setTimeout(function () {
+                    animateDashboard($, ordering, guests.length, 0);
+                }, 2000);
+
+                window.setTimeout(function () {
+                    refreshDashboardRandomly($, guests, null);
+                }, 2000 * (guests.length + 10));
+
+            });
+        })(jQuery);
+
+        function initHeading($) {
+            var headingZoomRatio = 0.5;
+            $('.heading')
+                .splitFlap({
+                    text: 'Zsoka es Peti eskuvoi jarata',
+                    charWidth: 50 * headingZoomRatio,
+                    charHeight: 100 * headingZoomRatio,
+                    imageSize: (2500 * headingZoomRatio) + 'px ' + (100 * headingZoomRatio) + 'px'
+                });
+        }
+
+        function initDashboard($, guests) {
+            var rowZoomRatio = 0.3;
+            var nameColumnWidth = 19;
+            var tableColumnWidth = 7;
+            var rowsInSection = 18;
+            for (var i = 0; i < guests.length; i++) {
+                var id = 'rows_' + i;
+                var sectionId = i < rowsInSection ? 'firstSection' : (i < 2 * rowsInSection ? 'secondSection' : 'thirdSection');
+                var guest = guests[i];
+                var newDomElement = '<div id=' + id + '>' + guest.name.padEnd(nameColumnWidth) + ' ' + guest.table.padEnd(tableColumnWidth) + '</div>';
+
+                $('#' + sectionId).append(newDomElement);
+                $('#' + id).splitFlap({
+                    textInit: ''.padEnd(nameColumnWidth + 1 + tableColumnWidth),
+                    autoplay: false,
+                    charWidth: 50 * rowZoomRatio,
+                    charHeight: 100 * rowZoomRatio,
+                    imageSize: (2500 * rowZoomRatio) + 'px ' + (100 * rowZoomRatio) + 'px',
+                });
+            }
+        }
+
+        function animateDashboard($, ordering, length, idx) {
+            window.setTimeout(function () {
+                if (idx == length) {
+                    return;
+                }
+
+                $('#rows_' + ordering[idx])
+                    .splitFlap('splitflap').animate();
+                animateDashboard($, ordering, length, idx + 1);
+            }, 2000);
+        }
+
+        function refreshDashboardRandomly($, guests, prevIdx) {
+            window.setTimeout(function () {
+                var rowZoomRatio = 0.3;
+                var randomIdx = Math.floor(Math.random() * guests.length);
+
+                while (randomIdx == prevIdx) { //to avoid collision
+                    randomIdx = Math.floor(Math.random() * guests.length);
+                }
+
+                //TODO: variate text with for example good wishes
+                $('#rows_' + randomIdx)
+                    .splitFlap({
+                        text: 'Itt a piros hol a piros?'.padEnd(27),
+                        charWidth: 50 * rowZoomRatio,
+                        charHeight: 100 * rowZoomRatio,
+                        imageSize: (2500 * rowZoomRatio) + 'px ' + (100 * rowZoomRatio) + 'px',
+                    });
+
+                if (prevIdx != null) {
+                    var guest = guests[prevIdx];
+                    var text = guest.name.padEnd(19) + ' ' + guest.table.padEnd(7);
+                    $('#rows_' + prevIdx)
+                        .splitFlap({
+                            text: text.padEnd(27),
+                            charWidth: 50 * rowZoomRatio,
+                            charHeight: 100 * rowZoomRatio,
+                            imageSize: (2500 * rowZoomRatio) + 'px ' + (100 * rowZoomRatio) + 'px',
+                        });
+                }
+
+                refreshDashboardRandomly($, guests, randomIdx);
+            }, 20000);
+        }
+    </script>
+</body>
+</html>
